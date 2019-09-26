@@ -15,5 +15,12 @@ namespace UnitTestProject1
             bool result4 = Program.IsOdd(4);
             Assert.AreEqual(false, result4);
         }
+        public void TestIsEven()
+        {
+            bool result2 = Program.isEven(2);
+            Assert.AreEqual(true, result2);
+            bool result1 = Program.isEven(1);
+            Assert.AreEqual(true, result1);
+        }
     }
 }
