@@ -14,6 +14,13 @@ namespace UnitTestProject1
             int result2=Program.Ceil(-2.5f);
             Assert.AreEqual(-2, result2);
         }
+        public void Testfloor()
+        {
+            int result1 = Program.floor((float)2.3);
+            Assert.AreEqual(3, result1);
+            int result2 = Program.floor(-2.5f);
+            Assert.AreEqual(-2, result2);
+        }
         
     }
 }

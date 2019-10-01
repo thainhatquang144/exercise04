@@ -10,7 +10,8 @@ namespace ConsoleApplication2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(IsPrime(4));
+            //Console.WriteLine(Rand1());
+            Console.WriteLine(Factorial(5));
         }
         public static bool IsPrime(int n)
         {
@@ -37,9 +38,29 @@ namespace ConsoleApplication2
               return ((int)x)+1;
             
         }
-        public static int floor
+        public static int floor(float x)
         {
+            int a = (int)x;
+            if (x < 0)
+                if(x>a)
+                return ((int)x)-1;
+            return ((int)x);
+        }
+        public static int Rand1()
+        {
+            Random rand = new Random();
+            int rd= rand.Next(0, 2147483647);
+            return rd;
 
+        }
+        public static long Factorial(long n)
+        {
+            long R=1 ;
+            for (int i = 1; i <= n; i++)
+            {
+                R = i*R;
+            }
+            return R;
         }
 
     }
