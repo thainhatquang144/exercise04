@@ -11,7 +11,8 @@ namespace ConsoleApplication2
         static void Main(string[] args)
         {
             //Console.WriteLine(Rand1());
-            Console.WriteLine(Factorial(5));
+          //  Console.WriteLine(Factorial(5));
+            Console.WriteLine(Rand2());
         }
         public static bool IsPrime(int n)
         {
@@ -53,12 +54,44 @@ namespace ConsoleApplication2
             return rd;
 
         }
+        public static double Rand2()
+        {
+            Random rand = new Random();
+            double rd = rand.Next(0,1);
+            return rd;
+        }
         public static long Factorial(long n)
         {
             long R=1 ;
             for (int i = 1; i <= n; i++)
             {
                 R = i*R;
+            }
+            return R;
+        }
+        public static int Square(int n)
+        {
+            return n * n;
+        }
+        public static int cube(int n)
+        {
+            return n * n * n;
+        }
+        public static int abs(int n)
+        {
+            if (n < 0)
+            {
+                return -n;
+            }
+            else
+                return n;
+        }
+        public static int Pow(int x, int y)
+        {
+            int R = 0;
+            for (int i = 1; i < y; i++)
+            {
+                R = R * x;
             }
             return R;
         }
