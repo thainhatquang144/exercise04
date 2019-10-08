@@ -4,97 +4,184 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication2
+namespace Draw4b
 {
-    public class Program
+    class Program
     {
-        static void Main(string[] args)
+        private static void Setup(char[,] arr, int n)
         {
-            //Console.WriteLine(Rand1());
-          //  Console.WriteLine(Factorial(5));
-            Console.WriteLine(Rand2());
+            for (int d = 0; d < n; d++)
+                for (int c = 0; c < n; c++)
+                    arr[d, c] = ' ';
         }
-        public static bool IsPrime(int n)
+        private static void Print(char[,] arr, int n)
         {
-            int count = 0;
-            for (int i = 0; i <= n; i++)
+            for (int d = 0; d < n; d++)
             {
-                if (n % i == 0)
-                {
-                    count++;
-                } if (count < 2)
-                {
-                    return false;
-                }
+                for (int c = 0; c < n; c++)
+                    Console.Write(arr[d, c]);
+                Console.WriteLine();
             }
-        return true;
         }
-        //input:
-        //output:
-        public static int Ceil(float x)
+        private static void Print2(char[,] arr, int n)
         {
-            if (x < 0)
-             return ((int)x);
-             
-              return ((int)x)+1;
-            
+            for (int d = 0; d < n; d++)
+            {
+                for (int c = 0; c < n; c++)
+                    Console.Write(arr[d, c] + " ");
+                Console.WriteLine();
+            }
         }
-        public static int floor(float x)
+        public static void DrawW(int n)
         {
-            int a = (int)x;
-            if (x < 0)
-                if(x>a)
-                return ((int)x)-1;
-            return ((int)x);
+            char[,] arr = new char[n * 4, n * 4];
+            Setup(arr, n * 4);
+            int a = n - 2;
+            int b = n - 1;
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, i] = 'w';
+                arr[i, n + a - i] = 'w';
+                arr[i, n + a + i] = 'w';
+                arr[i, n + a + b + b - i] = 'w';
+            }
+            Print(arr, 4 * n);
         }
-        public static int Rand1()
+        public static void DrawA(int n)
         {
-            Random rand = new Random();
-            int rd= rand.Next(0, 2147483647);
-            return rd;
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            int a = 1;
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, n - a] = 'a';
+                arr[i, n - 1 + i] = 'a';
+                arr[n - 3, n + 1 - i] = 'a';
+                a = a + 1;
+            }
+            Print(arr, n * 2);
+        }
+        public static void DrawN(int n)
+        {
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            int a = 1;
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, 0] = 'n';
+                arr[i, n - 1] = 'n';
+                arr[i, i] = 'n';
+                arr[i, n - a] = 'n';
+            }
+            Print(arr, n * 2);
+        }
+        public static void DrawX(int n)
+        {
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, i] = 'x';
+                arr[i, n - 1 - i] = 'x';
+            }
+            Print2(arr, n * 2);
+        }
+        public static void DrawPlus(int n)
+        {
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, n - 3] = '+';
+                arr[n - 3, i] = '+';
+            }
+            Print2(arr, n * 2);
+        }
+        public static void DrawU(int n)
+        {
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, 0] = 'u';
+                arr[n - 1, i] = 'u';
+                arr[i, n - 1] = 'u';
+            }
+            Print2(arr, n * 2);
+        }
+        public static void DrawV(int n)
+        {
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            int a = n - 2;
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, i] = 'v';
+                arr[i, n + a - i] = 'v';
+            }
+            Print(arr, n * 2);
+        }
+        public static void DrawSquare(int n)
+        {
+            char[,] arr = new char[n * 2, n * 2];
+            for (int d = 0; d < n; d++)
+                for (int c = 0; c < n; c++)
+                    arr[d, c] = 'o';
+            Print2(arr, n * 2);
+        }
+        public static void DrawSquare2(int n)
+        {
+            char[,] arr = new char[n, n];
+            Setup(arr, n * 2);
+            for (int i = 0; i < n; i++)
+            {
+                arr[i, 0] = 'o';
+                arr[0, i] = 'o';
+                arr[i, n - 1] = 'o';
+                arr[n - 1, i] = 'o';
+            }
 
+            Print2(arr, n);
         }
-        public static double Rand2()
+        public static void DrawTriangle(int n)
         {
-            Random rand = new Random();
-            double rd = rand.Next(0,1);
-            return rd;
-        }
-        public static long Factorial(long n)
-        {
-            long R=1 ;
-            for (int i = 1; i <= n; i++)
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            for (int i = 0; i < n; i++)
             {
-                R = i*R;
+                arr[i, n - 1 - i] = 'A';
+                arr[i, n - 1 + i] = 'A';
+                arr[n - 1, i] = 'A';
+                arr[n - 1, i + n - 1] = 'A';
             }
-            return R;
+            Print(arr, n * 2);
         }
-        public static int Square(int n)
+        public static void DrawTriangle2(int n)
         {
-            return n * n;
-        }
-        public static int cube(int n)
-        {
-            return n * n * n;
-        }
-        public static int abs(int n)
-        {
-            if (n < 0)
+            char[,] arr = new char[n * 2, n * 2];
+            Setup(arr, n * 2);
+            for (int i = 0; i < n; i++)
             {
-                return -n;
+                arr[0, i] = 'v';
+                arr[0, i + n - 1] = 'v';
+                arr[i, i] = 'v';
+                arr[i, 2 * n - 2 - i] = 'v';
             }
-            else
-                return n;
+            Print(arr, n * 2);
         }
-        public static int Pow(int x, int y)
+        public static void Main(String[] args)
         {
-            int R = 0;
-            for (int i = 1; i < y; i++)
-            {
-                R = R * x;
-            }
-            return R;
+            DrawW(7);
+            //DrawA(7);
+            //DrawN(5);
+            // DrawX();
+            // DrawPlus(5);
+            //DrawU(7);
+            // DrawV(7);
+            //DrawSquare(5);
+            //DrawSquare2(5);
+            // DrawTriangle(4);
+            //DrawTriangle2(4);
         }
-
     }
 }
